@@ -1,3 +1,19 @@
+
+<?php
+//Arryar búnir til 
+$errors = [];
+$missing = [];
+//Tjékkar ef formið hefur verið submittað
+if (isset($_POST['send'])) {
+
+//Expected fields in form
+$expected = ['uname', 'password', 'email'];
+$required = ['uname', 'password', 'email'];
+//Keyrt skriftuna
+require './process.php';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +31,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="css/shop-item.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,42 +43,51 @@
 </head>
 
 <body>
+
     <?php
     include "menu.php"
     ?>
-    <!-- Page Content -->
+    <!-- Page Content -->    
     <div class="container">
+    <h1> Log in </h1>
 
-            	<div>            	
-            	<h3> Login </h3>
-                </div>
-                </br>
-                <form action="action_page.php">         
-
-                <div class="container">
-                <label><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-
-                <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-
-                <button type="submit">Login</button>
-                <input type="checkbox" checked="checked"> Remember me
-                </div>               
-                
-                </div>
-                </form>            
-            	</div>       
-                </div>
-            </div>      
-
+  <?php if($missing || $errors) { ?>
+    <p class="warning">Please fix the item(s) indicated.</p>
+    <?php } ?>
+  <div class="form-group col-md-9">
+    <label for="email" class="col-sm-2 control-label">
+    <?php if ($missing && in_array('email', $missing)) { ?>
+    <span class="warning">Please enter a valid email address</span>
+    <?php } ?>
+    </label>
+    <div class="col-sm-10">
+      <input name="email" type="email" class="form-control" id="inputEmail3" placeholder="Email">
     </div>
+  </div>
+
+  <div class="form-group col-md-9">
+    <label for="password" class="col-sm-2 control-label">
+    <?php if ($missing && in_array('password', $missing)) { ?>
+    <span class="warning">Please enter a valid password.</span>
+    <?php } ?>
+    </label>
+    <div class="col-sm-10">
+      <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  
+  <div class="form-group col-md-9">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input name="send" type="submit" class="btn btn-default">
+    </div>
+  </div>
+
+
+</form>
     <!-- /.container -->
 
     <div class="container">
-
-        <hr>
-
+          
         <!-- Footer -->
         <footer>
             <div class="row">

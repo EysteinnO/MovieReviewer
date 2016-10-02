@@ -27,37 +27,30 @@
 
 </head>
 
+
 <body>
+    <?php include "menu.php" ?>                                     
 
-    <?php include "menu.php" ?>
-
+<div>
+    <?php displayRandomPhotoArea(); ?>    
     <!-- Page Content -->
     <div class="container">
-
+        
         <div class="row">
-
             <div class="col-md-3">
                 <p class="lead">Genres</p>
                 <div class="list-group">
-                    <a href="action.php" class="list-group-item active">Action</a>
-                    <a href="thriller.php" class="list-group-item">Thriller</a>
-                    <a href="horror.php" class="list-group-item">Horror</a>
-                    <a href="comedy.php" class="list-group-item">Comedy</a>
-                    <a href="scifi.php" class="list-group-item">Science Fiction</a>                    
+                    <a href="" class="list-group-item active">Action</a>
+                    <a href="" class="list-group-item">Thriller</a>
+                    <a href="" class="list-group-item">Horror</a>
+                    <a href="" class="list-group-item">Comedy</a>
+                    <a href="" class="list-group-item">Science Fiction</a>                    
                 </div>
             </div>
 
-            <div class="col-md-9">
-                <?php                                
-                function displayRandomPhotoArea() {
-                $photoAreas = array("popp.jpg", "popp2.jpg", "popp3.jpg");
-
-                $randomNumber = rand(0, (count($photoAreas) - 1));   
-                echo '<img src="myndir/' . $photoAreas[$randomNumber] . '" width="800" height="300">';           
-                }
-                ?>    
-                <div class="thumbnail">                    
-                    <?php  displayRandomPhotoArea(); ?>
+            <div class="col-md-9">                
+                <div class="thumbnail">         
+                    
                     <div class="caption-full">                        
                         <h4><a href="#">Action Movies</a>
                         </h4>
@@ -78,8 +71,9 @@
          </div>
 
      </div>
+     </div>
 
-    </div>
+    
     <!-- /.container -->
 
     <div class="container">
@@ -92,6 +86,14 @@
 
     </div>
     <!-- /.container -->
+<?php                                
+                function displayRandomPhotoArea() {
+                $photoAreas = array("brown.jpg", "green.jpg","goldmetallic.jpg");
+
+                $randomNumber = rand(0, (count($photoAreas) - 1));   
+                echo '<img src="myndir/' . $photoAreas[$randomNumber] . '" class="bg">';           
+                }
+                ?>    
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
